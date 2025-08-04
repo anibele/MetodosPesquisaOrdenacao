@@ -1,0 +1,18 @@
+package numeros;
+
+import java.util.ArrayList;
+import java.util.Random;
+
+public class Util {
+	/*
+	 * metodo de classe que popula aleatroriamente uma lista com numeros inteiros
+	 * */
+	public static void popularListaNumerosAleatorios(ArrayList<> lista, int quantidade, int inicio, int fim){
+		Random gerador = new Random();
+		int numero;
+		for(; quantidade > 0; quantidade) {
+			numero = gerador.nextInt(inicio, fim);
+			lista.add(numero);
+		}
+	}
+}

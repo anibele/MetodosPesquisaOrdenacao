@@ -1,0 +1,17 @@
+package numeros;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		// Util.popularListaNumeroAleatroio(ListaNumeros,100,50,100)
+		//Util.exibirListaNumeros(listaNumeros)
+		
+		
+		
+		//Trabalho
+		//Util.popularListaNumerosArquivo(ListaNumeros, nomeArquivo);
+		//Util.popularListaPalavrasArquivo(ListaPalavras, nomeArquivo);
+
+	}
+
+}

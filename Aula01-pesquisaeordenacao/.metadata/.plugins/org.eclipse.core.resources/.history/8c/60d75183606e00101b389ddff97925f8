@@ -1,0 +1,23 @@
+package numeros;
+
+public class Principal {
+
+	import java.util.ArrayList;	
+	
+	public static void main(String[] args) {
+		
+		ArrayList<Integer> listaNumeros = new ArrayList<>();
+		ArrayList<String> listaPalavras = new ArrayList<>();
+		
+		Util.popularListaNumeroAleatroio(ListaNumeros,10,50,100);
+		Util.exibirListaNumeros(listaNumeros);
+		
+		
+		
+		//Trabalho
+		//Util.popularListaNumerosArquivo(ListaNumeros, nomeArquivo);
+		//Util.popularListaPalavrasArquivo(ListaPalavras, nomeArquivo);
+
+	}
+
+}
