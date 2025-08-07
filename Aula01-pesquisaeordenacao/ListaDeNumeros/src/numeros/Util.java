@@ -2,6 +2,9 @@ package numeros;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Util {
 	/*
@@ -48,6 +51,40 @@ public class Util {
 		}
 	}
 	
+    public static void popularListaNumerosArquivo(ArrayList<Integer> lista, String nomeArquivo) {
+        try {
+            FileWriter arquivo = new FileWriter(nomeArquivo);
+            BufferedWriter escritor = new BufferedWriter(arquivo);
+
+            for (int numero : lista) {
+                escritor.write(numero + "");
+                escritor.newLine();
+            }
+
+            escritor.close();
+            System.out.println("Números salvos no arquivo: " + nomeArquivo);
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar os números: " + e.getMessage());
+        }
+    }
+
+    
+    public static void popularListaPalavrasArquivo(ArrayList<String> lista, String nomeArquivo) {
+        try {
+            FileWriter arquivo = new FileWriter(nomeArquivo);
+            BufferedWriter escritor = new BufferedWriter(arquivo);
+
+            for (String palavra : lista) {
+                escritor.write(palavra);
+                escritor.newLine();
+            }
+
+            escritor.close();
+            System.out.println("Palavras salvas no arquivo: " + nomeArquivo);
+        } catch (IOException e) {
+            System.out.println("Erro ao salvar as palavras: " + e.getMessage());
+        }
+    }
 }
 
 

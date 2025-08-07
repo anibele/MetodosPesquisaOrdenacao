@@ -15,9 +15,9 @@ public class Principal {
 		Util.popularListaPalavrasAleatorio(listaPalavras,10,10);
 		Util.exibirListaPalavras(listaPalavras);
 		
-		//Trabalho para proxima aulas
-		//Util.popularListaNumerosArquivo(ListaNumeros, nomeArquivo);
-		//Util.popularListaPalavrasArquivo(ListaPalavras, nomeArquivo);
+		//arquivos
+		Util.popularListaNumerosArquivo(listaNumeros, "numeros.txt");
+		Util.popularListaPalavrasArquivo(listaPalavras, "palavras.txt");
 
 	}
 
