@@ -1,0 +1,119 @@
+-> Revisão: bolha, seleção, inserção, agitação, pente, shell
+    1) O que é ordenação e por que é importante ordenar estruturas de dados?
+      * A ordenação é o processo de organizar dados em uma estrutura lógica, como em ordem crescente ou decrescente, para facilitar a recuperação e análise de informações. É importante porque melhora a eficiência da busca por elementos específicos, ajuda a identificar padrões e tendências.
+    
+    2) Dos vários algoritmos de ordenação, há categorias que os classificam, como:
+    -> estabilidade
+    -> complexidade
+    Explique o que é estabilidade e complexidade. Se necessário, dar exemplos. Quais os métodos estudados que são estáveis e quais que são instáveis.
+      * Um método de ordenação é estável se ele mantém a ordem relativa de elementos que possuem chaves (ou valores) iguais. Em outras palavras, se você tem dois itens com o mesmo valor, um algoritmo estável garantirá que eles apareçam na lista final na mesma ordem em que apareceram na lista original.
+      A complexidade de um algoritmo descreve o quanto de recursos (principalmente tempo e memória) ele consome para executar, em função do tamanho da entrada (o número de itens a serem ordenados). Geralmente, expressamos isso usando a notação Big O (O()), que nos dá uma ideia do pior caso de desempenho.
+      Exemplo: Imagine que você tem uma lista de pessoas com seus nomes e idades, e você quer ordenar por idade. Se duas pessoas têm a mesma idade, um algoritmo de ordenação estável manterá a ordem original entre elas (por exemplo, se João veio antes de Maria na lista original e ambos têm 30 anos, João ainda estará antes de Maria após a ordenação por idade).
+
+    3) Dos métodos estudados, quais suas complexidades? Como é avaliada a complexidade de um método de ordenação?
+      * A complexidade de um algoritmo é avaliada com base em quantas operações ele realiza conforme o tamanho dos dados (chamado de "n").
+        Desempenho: ▲ melhor
+                    │
+         O(n log n) │        sort
+                    │        pente (médio)
+                    │
+         O(n)       │        bolha (melhor caso)
+                    │        agitação (melhor caso)
+                    │
+         O(n²)      ▼        bolha, seleção, agitação, pente (pior caso)
+
+
+        | Tipo de Complexidade | O que significa                                   |
+        | -------------------- | ------------------------------------------------- |
+        | **O(1)**             | Tempo constante (não muda com o tamanho do vetor) |
+        | **O(log n)**         | Cresce devagar, como em buscas binárias           |
+        | **O(n)**             | Cresce linearmente com o tamanho do vetor         |
+        | **O(n log n)**       | Muito eficiente – usado em algoritmos rápidos     |
+        | **O(n²)**            | Cresce rapidamente – ruim para vetores grandes    |
+
+        -> Bolha (Bubble Sort)
+            -Troca vizinhos fora de ordem.
+            -Simples, mas lento (O(n²)).
+            -Pode parar cedo se já estiver ordenado.
+        -> Seleção (Selection Sort)
+            -Encontra o menor e troca com a posição certa.
+            -Poucas trocas, muitas comparações.
+            -Sempre O(n²), mesmo com vetor quase ordenado.
+        -> Pente (Comb Sort)
+            -Compara elementos distantes (gap).
+            -Reduz o gap até agir como o Bubble.
+            -Melhor que o Bubble, mas pior que o STL sort.
+        -> Agitação (Cocktail Sort)
+            -Varre o vetor nos dois sentidos.
+            -Evita lentidão do Bubble com valores no fim.
+            -Ainda O(n²), mas um pouco melhor que o Bubble.
+
+    4) Dos métodos estudados, qual o melhor método de ordenação?
+      * Para Pequenos Conjuntos de Dados ou Listas Quase Ordenadas: Métodos simples como o Bolha ou Inserção podem ser adequados, embora ineficientes em geral.
+        Quando a Estabilidade é Crucial: Se você precisa manter a ordem original de elementos iguais, métodos estáveis como o Bolha, Inserção são preferíveis.
+    
+    5) Faça um método na sua linguagem de preferência que retorne true/True se a lista enviada como parâmetro está ordenada, o false/False caso contrário
+      *   bool estaOrdenada(int lista[], int tamanho) {
+          for (int i = 1; i < tamanho; ++i) {
+              if (lista[i] < lista[i - 1]) {
+                  return false;
+              }
+          }
+          return true;
+          }
+
+    6) Da a sequência de valores na estrutura abaixo, contabilize quantas comparações e quantas trocas há para os métodos:
+        - bolha - 56 comparações e 22 trocas 
+        - pente - 35 comparações e e 8 trocas
+        - seleção - 36 comparações e 6 trocas
+
+        0   1   2   3   4   5   6   7   8
+        30  90  10  20  80  10  20  40  10     
+                    
+    7) Na sua linguagem de preferência, implemente (sem consulta) seu método escolhido para saber.
+      *  void pente(int* v, int n) {
+          int gap = n;
+          bool trocou = true;
+
+          while (gap > 1 || trocou) {
+            gap = gap * 10 / 13;  // divide por 1.3 de forma inteira
+            if (gap < 1) gap = 1;
+            trocou = false;
+
+              for (int i = 0; i + gap < n; i++) {
+                if (v[i] > v[i + gap]) {
+                swap(v[i], v[i + gap]);
+                trocou = true;
+                }
+              }
+           }
+        }
+
+    8) Como ordenar pela segunda ou terceira chave
+        Exemplo uma lista de Alunos(codigo, curso, nome) - ordenar por curso e ordenar por nome
+      * void bolha(Aluno* vetor, int n) {
+        bool trocou;
+        for (int i = 0; i < n - 1; i++) {
+          trocou = false;
+            for (int j = 0; j < n - 1 - i; j++) {
+                // Comparar curso primeiro
+                  if (vetor[j].curso > vetor[j + 1].curso) {
+                    // Trocar se curso de j for maior que o de j+1
+                      Aluno temp = vetor[j];
+                      vetor[j] = vetor[j + 1];
+                      vetor[j + 1] = temp;
+                      trocou = true;
+                    }
+                // Se o curso for igual, comparar nome
+                  else if (vetor[j].curso == vetor[j + 1].curso) {
+                      if (vetor[j].nome > vetor[j + 1].nome) {
+                        Aluno temp = vetor[j];
+                        vetor[j] = vetor[j + 1];
+                        vetor[j + 1] = temp;
+                        trocou = true;
+                      }
+                   }
+            }
+        if (!trocou) break; // Não houve troca, vetor está ordenado
+     }
+  }
