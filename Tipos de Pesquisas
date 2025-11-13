@@ -1,0 +1,62 @@
+Sequencial: "Força bruta"
+→ Usa varredura elemento por elemento até encontrar o valor procurado.
+→ Exemplos: in, contains, indexOf.
+→ Serve quando quero a posição do item ou não posso ordenar a lista.
+→ Pode ser aplicada em listas, vetores, strings ou qualquer estrutura linear.
+→ Complexidade: O(n) → o tempo de busca cresce linearmente com o tamanho da coleção.
+→ Vantagem: Simples de implementar, funciona em qualquer estrutura.
+→ Desvantagem: Ineficiente em grandes volumes de dados.
+→ Exemplo prático: procurar um nome específico em uma lista de chamada.
+
+Binária: "Força uma árvore"
+→ Baseia-se na divisão sucessiva da lista ordenada (busca por intervalos).
+→ Dependente de ordenação — só funciona se os dados estiverem ordenados.
+→ Não é nativa em muitas linguagens, mas pode ser implementada facilmente.
+→ Reduz o número de comparações: a cada passo, elimina metade dos elementos restantes.
+→ Complexidade: O(log n) → extremamente eficiente em listas grandes ordenadas.
+→ Vantagem: Rápida e precisa em dados ordenados.
+→ Desvantagem: Requer ordenação prévia; ineficiente se os dados mudam com frequência.
+→ Exemplo prático: busca de um número em uma lista telefônica organizada por nome.
+
+Pesquisa Digital: "Dígito a dígito"
+→ Verifica caractere por caractere ou dígito por dígito (ex: CPF, código, string, número de série).
+→ Pode usar análise posicional, comparando partes específicas de uma chave.
+→ Indicada quando a estrutura da chave é sequencial (como números ou strings).
+→ Complexidade: varia conforme o número de dígitos/chaves — geralmente O(k), onde k é o tamanho da chave.
+→ Vantagem: Boa para comparar dados estruturados e normalizados.
+→ Desvantagem: Menos eficiente quando os dados são muito longos ou heterogêneos.
+→ Exemplo prático: verificar se um CPF digitado coincide exatamente com o registrado, comparando algarismo por algarismo.
+
+Tabela Hash: "Endereçamento direto"
+→ Baseia-se em uma função hash que converte uma chave em um índice (endereço) de armazenamento.
+→ Permite acesso direto aos dados — busca, inserção e remoção em tempo constante (O(1)).
+→ Cada elemento é armazenado na posição calculada pela função hash.
+→ Colisões (duas chaves gerando o mesmo índice) são resolvidas por encadeamento ou endereçamento aberto.
+→ Vantagem: Altíssimo desempenho em grandes volumes de dados.
+→ Desvantagem: Maior uso de memória e dependência de uma boa função hash.
+→ Usos comuns: dicionários, tabelas de símbolos, controle de duplicidade, cache e bancos de dados.
+
+Tabela Hash –> Estrutura de dados que armazena e busca (pesquisa, inserir e remover) via cálculo de endereçamento
+Um conjunto de dados (objeto ou uma estrutura encapsulada) a serem armazenados via cálculo de endereçamento (função hash -> espalhamento)
+uma das variáveis será chave de referência (primária ou identificador) e que a função hash terá aplicação
+Tabela Hash é o princípio de guardar bem para buscar bem. Complexibilidade desse método O(1).
+
+Tabela HASH é utilizada:
+→ Quando precisamos armazenar e acessar dados rapidamente, sem depender de ordenação.
+→ Ideal para buscas diretas por uma chave de identificação única (ex: CPF, ID, matrícula, código de produto).
+→ Muito usada em bancos de dados, tabelas de símbolos, dicionários, mapas (maps) e conjuntos (sets).
+→ Serve para situações em que operações de inserção, remoção e pesquisa precisam ser muito rápidas (O(1)).
+→ Excelente para verificar existência de elementos (“este item já foi cadastrado?”).
+→ Não é adequada quando é necessário percorrer dados em ordem — pois a 'distribuição é aleatória' com base no cálculo da função hash.
+
+Índice Remissivo
+Um índice remissivo é uma lista de termos, palavras e assuntos, geralmente em ordem alfabética, que aparece no final de um livro ou documento para ajudar o leitor a localizar a página em que cada item é mencionado. 
+Diferente do sumário, que lista os títulos de capítulos e seções, o índice remissivo detalha o conteúdo principal e termos-chave de forma mais específica.
+
+-> Como a Tabela hash se relaciona com a Pesquisa Remissiva?
+Um índice remissivo é uma estrutura que relaciona um termo (ou palavra-chave) com os locais onde ele aparece, como ocorre no índice de um livro que indica em quais páginas um assunto é citado. 
+Em sistemas de busca e bancos de dados, esse índice permite encontrar rapidamente as ocorrências de um termo sem precisar percorrer todo o conteúdo.
+A tabela hash é uma forma eficiente de implementar um índice remissivo. Nela, cada termo funciona como uma chave, e uma função hash calcula o endereço (índice) onde a lista de ocorrências será armazenada. 
+Assim, ao buscar um termo, o sistema calcula seu hash e acessa diretamente o local onde suas referências estão guardadas, tornando a busca muito rápida.
+Portanto, o índice remissivo representa o conceito lógico de mapear termos para suas posições, enquanto a tabela hash é a implementação prática que torna esse mapeamento mais eficiente. 
+Essa combinação é amplamente usada em mecanismos de busca, dicionários, bancos de dados e outros sistemas que precisam de acesso rápido à informação.
